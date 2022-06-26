@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
         console.log('value :::: ',form.value)
         this.http.post('http://localhost:8000/api/v1/todo/create/', sendRequestData).subscribe((res: any) => {
           console.log(res)
-          localStorage.setItem('user',res)
+          localStorage.setItem('user',JSON.stringify(res))
           if (!res.error) {
             alert("You are Registered Successfully")
 

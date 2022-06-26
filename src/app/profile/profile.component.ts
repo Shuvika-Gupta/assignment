@@ -13,7 +13,7 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/comm
 export class ProfileComponent implements OnInit {
   user: any;
   profileForm!: FormGroup;
-
+data:any;
   constructor(private fb: FormBuilder,
     private activatedRoute: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer,
     private http:HttpClient) {
@@ -66,6 +66,9 @@ export class ProfileComponent implements OnInit {
 
       self.http.put('http://localhost:8000/api/v1/todo/update/'+user.id+"/", sendRequestData).subscribe((res: any) => {
         console.log(res)
+        this.data=res
+        // debugger
+        console.log("data:::::: ",this.data.email)
         if (!res.error) {
           if (res.replyCode == 'success') {
             alert("Profile is updated Successfully")
